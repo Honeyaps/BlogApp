@@ -1,0 +1,115 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 55px;
+  background-color: #000000;
+  color: rgb(251, 248, 248);
+}
+
+.logo {
+  font-size: 30px;
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: end;
+  list-style: none;
+  width: 75%;
+}
+
+
+
+
+.home,
+.social,
+.signin,
+.signup,
+.logout,
+.crt_blog {
+  text-decoration: none;
+  font-size: 17px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: rgb(166, 166, 166);
+}
+
+.home:hover{color: white;}
+.social:hover{color: white;}
+.signin:hover{color: white;}
+.signup:hover{color: white;}
+.logout:hover{color: white;}
+
+.crt_blog{border: white 2px solid;
+background-color: white;
+color: black;
+border-radius: 8px;}
+
+.mobile-menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 880px) {
+  .logo {
+    display: flex;
+    position: absolute;
+    font-size: 25px;
+    top: 15px;
+    left: 80px;
+    margin-left: -60px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links-mobile {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background-color: #000000;
+    left: 0%;
+    top: 55px;
+    transition: all 1.5s ease-out;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .home,
+.social,
+.signin,
+.signup,
+.logout,
+.crt_blog  {
+    text-align: center;
+    padding: 32px;
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+
+  .crt_blog{border: none;
+  background-color: transparent;
+color:white;}
+
+  .mobile-menu-icon {
+    display: block;
+    position: absolute;
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    top: 12px;
+    right: 30px;
+  }
+}
