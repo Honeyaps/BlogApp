@@ -82,8 +82,8 @@ export default function Crt_blg() {
               className="description_sec"
               name="description" // Corrected capitalization here
               onChange={handleChange}
-              errors={errors.description}
             />
+             {errors.description && <span className="error">{errors.description}</span>}
           </label>
           <br></br>
           <LabeledInput
@@ -108,7 +108,7 @@ function LabeledInput({ type, placeholder, name, onChange, errors }) {
   return (
     <label>
       <h9 className="">{name}</h9>
-      <input type={type} placeholder={placeholder} name={name} onChange={onChange} />
+      <input type={type} placeholder={placeholder} name={name} onChange={onChange}  />
       {errors && <span className="error">{errors}</span>}
     </label>
   );
