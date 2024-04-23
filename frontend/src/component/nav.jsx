@@ -17,7 +17,7 @@ export default function Navbar () {
              <h3 className='logo'>BLOGGER - <FaBlog /></h3>
              <ul className={isMobile? "nav-links-mobile" : "nav-links"}
              onClick={() => setIsMobile(false)}>
-                   <Link to="create_blog" className='crt_blog'>
+                   <Link to="/create_blog" className='crt_blog'>
                     <li>Create a Blog</li>
                    </Link>
                    <Link to="/home" className='home'>
@@ -32,7 +32,7 @@ export default function Navbar () {
                    <Link to="/signup" className='signup'>
                     <li><IoPersonOutline /></li>
                    </Link> */}
-                   <Link to="/signup" className='logout'>
+                   <Link to="/" className='logout'>
                     <li>Logout</li>
                    </Link>
              </ul>

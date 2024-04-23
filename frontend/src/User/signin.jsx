@@ -73,4 +73,14 @@ const SigninForm = () => {
     );
 };
 
+function LabeledInput({type,name,palceholder,erros}){
+    return(
+        <div className="form-group">
+                    <label>{nanme}</label>
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                    {erros && <span className="error">{errors.password}</span>}
+                </div>
+    )
+}
+
 export default SigninForm;
