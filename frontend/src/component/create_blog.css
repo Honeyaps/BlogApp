@@ -1,19 +1,47 @@
-.create_section{width: 30%;
-position: absolute;
-left: 35%;
-top: 25%;
-padding: 20px 2px 30px 20px;
-border-radius: 20px;
-border: solid 2px rgb(193, 193, 193);}
+.create_section {
+  max-width: 400px;
+  margin: 8% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
-.post_btn{padding: 10px 188px;
-border-radius: 5px;
-font-size: 15px;
-background-color: rgb(52, 52, 52);
-color: white;}
+.post_btn {
+  height: 40px;
+  width: 95%;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: rgb(52, 52, 52);
+  color: white;
+  cursor: pointer;
+}
 
-.description_sec{height: 100px;
-max-width: 96%;
-min-width: 96%;
-width: 96%;
+.post_btn:hover {
+  background-color: rgb(11, 11, 11);
+}
+
+.description_sec {
+  height: 100px;
+  max-width: 96%;
+  min-width: 96%;
+  width: 96%;
+}
+
+.latest_blog {
+  border-bottom: 1px solid rgb(164, 164, 164);
+  margin-top: 5px;
+}
+
+.latest_blog .blogs {
+  text-align: left;
+  margin: 25px 30px;
+  width: 800px;
+}
+
+.all_blogs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }

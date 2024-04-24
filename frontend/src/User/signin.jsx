@@ -50,7 +50,7 @@ const SigninForm = () => {
     };
 
     return (
-        <div className="signup-form-container">
+        <div className="signin-form-container">
             <h2>Sign in</h2>
             <br></br>
             <form onSubmit={handleSubmit}>
@@ -67,20 +67,11 @@ const SigninForm = () => {
                 <Link to='#' className='frgt_pass'>Forgott Password</Link>
                 <br></br><br></br>
                 <button type="submit" className='form_btn'>Sign in</button>
-                <p className='lower_txt'>Create a new account? <Link to='/signup'>SignUp</Link></p>
+                <p className='lower_txt'>Create a new account? <Link to='/'>SignUp</Link></p>
             </form>
         </div>
     );
 };
 
-function LabeledInput({type,name,palceholder,erros}){
-    return(
-        <div className="form-group">
-                    <label>{nanme}</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleChange} />
-                    {erros && <span className="error">{errors.password}</span>}
-                </div>
-    )
-}
 
 export default SigninForm;

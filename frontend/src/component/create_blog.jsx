@@ -1,5 +1,3 @@
-
-
 import Navbar from "./nav";
 import "./create_blog.css";
 import axios from "axios";

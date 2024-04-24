@@ -60,4 +60,16 @@ blogRouter.post("/create_post", upload.single("filename"), async (req, res) => {
   }
 });
 
+// api for get blog
+blogRouter.get("/getblog", async(req,res) =>{
+  try{
+    const response = await Blog.find({})
+    return res.json({
+      blog: response
+    })
+  } catch(error){
+    return res.status(403).json({msg: "error while getting blogs"})
+  }
+})
+
 module.exports = blogRouter;

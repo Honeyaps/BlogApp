@@ -2,11 +2,13 @@
 .signup-form-container {
     max-width: 400px;
     margin: 2% auto;
-    padding: 20px;
+    padding: 10px 20px 10px 33px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
+
 
 .signup-form-container h2{text-align: center;}
 
@@ -36,9 +38,10 @@ input[type="password"] {
 }
 
 .form_btn {
-    background-color: #242424;
+    background-color: rgb(52, 52, 52);
     color: white;
-    padding: 10px 150px;
+    width: 96%;
+    height: 40px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -46,7 +49,7 @@ input[type="password"] {
 }
 
 .form_btn:hover {
-    background-color: #242424;
+    background-color: #060606;
 }
 
 .lower_txt {
@@ -57,3 +60,15 @@ input[type="password"] {
 
 
 .frgt_pass{margin-left: 220px;}
+
+
+.signin-form-container {
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 10px 15px 10px 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.signin-form-container h2{text-align: center;}

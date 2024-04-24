@@ -20,11 +20,11 @@ export default function Home() {
   return (
     <>
     <Navbar/>
-    <div>
+    <div className="all_blogs">
       {
         blog.map((item,index) => (
           <div key={index}>
-            <Blog title={item.title} description={item.description} />
+            <Blog title={item.title} description={item.description} image={item.img} />
           </div>
         ))
       }
