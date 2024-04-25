@@ -1,19 +1,25 @@
 import Navbar from "./nav";
 import "./create_blog.css";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 axios.defaults.baseURL = "http://localhost:4500/";
 
 export default function Crt_blg() {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/signup")
+    }
+  })
   const [formData, setFormData] = useState({
     title: "",
     description: "", // Corrected typo here
   });
   const [image, setImage] = useState(null);
-
-  const navigate = useNavigate();
+  const [spinner, setSpinner] = useState(false);
+  
 
   const [errors, setErrors] = useState({});
 
@@ -36,23 +42,30 @@ export default function Crt_blg() {
     setErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-        const data = new FormData();
-        data.append('title', formData.title);
-        data.append('description', formData.description);
-        data.append('filename', image);
+      setSpinner(true);
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("description", formData.description);
+      data.append("filename", image);
 
-        console.log(data)
+      console.log(data);
+      const token = localStorage.getItem("token")
       try {
-        const response = await axios.post("/blog/create_post", data);
+        const response = await axios.post("/blog/create_post",data,{
+          headers:{
+            Authorization: token
+          }
+        });
         console.log(response);
         // Clear form data after successful submission if needed
         setFormData({
           title: "",
           description: "", // Corrected typo here
         });
-        navigate("/home");
+        navigate("/");
       } catch (error) {
         console.error("Error:", error);
+        alert("cannot add blog")
       }
     }
   };
@@ -81,21 +94,29 @@ export default function Crt_blg() {
               name="description" // Corrected capitalization here
               onChange={handleChange}
             />
-             {errors.description && <span className="error">{errors.description}</span>}
+            {errors.description && (
+              <span className="error">{errors.description}</span>
+            )}
           </label>
           <br></br>
           <LabeledInput
             type="file"
             placeholder="Insert Image"
             onChange={(e) => {
-              setImage(e.target.files[0]) // Corrected setting image state
+              setImage(e.target.files[0]); // Corrected setting image state
             }}
             name="Image: "
           />
           <br></br>
-          <button type="submit" className="post_btn">
-            Post
-          </button>
+          {spinner ? (
+            <button type="submit" className="post_btn" disabled>
+              <div class="loader"></div>
+            </button>
+          ) : (
+            <button type="submit" className="post_btn">
+              Post
+            </button>
+          )}
         </form>
       </div>
     </>
@@ -105,8 +126,13 @@ export default function Crt_blg() {
 function LabeledInput({ type, placeholder, name, onChange, errors }) {
   return (
     <label>
-      <h9 className="">{name}</h9>
-      <input type={type} placeholder={placeholder} name={name} onChange={onChange}  />
+      <h4>{name}</h4>
+      <input
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        onChange={onChange}
+      />
       {errors && <span className="error">{errors}</span>}
     </label>
   );

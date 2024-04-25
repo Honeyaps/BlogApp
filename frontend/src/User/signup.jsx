@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './signup.css'; // Import CSS file for styling
 import axios from "axios";
@@ -26,7 +25,7 @@ const SignupForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         let errors = {};
         if (!formData.firstname) {
             errors.firstname = "First name is required";
@@ -60,6 +59,7 @@ const SignupForm = () => {
                 const response = await axios.post("/user/signup", formData);
                 console.log(response.data.token);
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("name",response.data.name)
                 // Clear form data after successful submission if needed
                 setFormData({ 
                     firstname: '',

@@ -12,8 +12,8 @@ export default function App(){
         
         <Routes>
 
-            <Route path="/home" element={<Home />}></Route>
-            <Route path="/" element={<SignupForm />}></Route>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/signup" element={<SignupForm />}></Route>
             <Route path="/signin" element={<SigninForm />}></Route>
             <Route path="/create_blog" element={<Crt_blg />}></Route>
             <Route path="/view" element={<ViewBlog />}></Route>

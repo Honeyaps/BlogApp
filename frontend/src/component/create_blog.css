@@ -1,6 +1,6 @@
 .create_section {
   max-width: 400px;
-  margin: 8% auto;
+  margin: 6% auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -29,7 +29,7 @@
 }
 
 .latest_blog {
-  border-bottom: 1px solid rgb(164, 164, 164);
+  border-bottom: 1px solid rgb(200, 200, 200);
   margin-top: 5px;
 }
 
@@ -45,3 +45,43 @@
   align-items: center;
   cursor: pointer;
 }
+
+.decription_sec{
+  width: 65%;
+}
+
+/* for spinner */
+
+.loader {
+  border: 4px solid #fff;
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 4px solid white;
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+}
+
+.loader {
+  border: 4px solid white;
+  border-left-color: transparent;
+  width: 36px;
+  height: 36px;
+  animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.img_prod{width: 500px;
+height: auto;}

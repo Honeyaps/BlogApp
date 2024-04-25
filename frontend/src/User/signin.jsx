@@ -4,8 +4,6 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
-
 const SigninForm = () => {
     const [formData, setFormData] = useState({
         email: '',
@@ -41,7 +39,8 @@ const SigninForm = () => {
             try {
                 const response = await axios.post("http://localhost:4500/user/signin",formData)
                 localStorage.setItem("token",response.data.token)
-                navigate("/home")
+                localStorage.setItem("name",response.data.name)
+                navigate("/")
             } catch (error) {
                 console.error("Error:", error);
                 alert("user not found")
@@ -67,7 +66,7 @@ const SigninForm = () => {
                 <Link to='#' className='frgt_pass'>Forgott Password</Link>
                 <br></br><br></br>
                 <button type="submit" className='form_btn'>Sign in</button>
-                <p className='lower_txt'>Create a new account? <Link to='/'>SignUp</Link></p>
+                <p className='lower_txt'>Create a new account? <Link to='/signup'>SignUp</Link></p>
             </form>
         </div>
     );
