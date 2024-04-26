@@ -16,7 +16,7 @@ function Auth(req,res,next){
     catch(e){
         return res.status(403).json({msg: "cannot perform operations"})
     }
-
-    
 }
+
 module.exports = Auth
+

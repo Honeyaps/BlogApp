@@ -18,7 +18,9 @@ export default function Navbar () {
 
     return(
         <nav className='navbar'>
-             <h3 className='logo'>BLOGGER - <FaBlog /></h3>
+            <Link to="/" className='logo_link'>
+             <h3 className='logo'>BLOGGER <FaBlog /></h3>
+             </Link>
              <ul className={isMobile? "nav-links-mobile" : "nav-links"}
              onClick={() => setIsMobile(false)}>
                    <Link to="/create_blog" className='crt_blog'>
@@ -30,12 +32,6 @@ export default function Navbar () {
                    <Link to="" className='social'>
                     <li>Social</li>
                    </Link>
-                   {/* <Link to="/signin" className='signin'>
-                    <li>Signin</li>
-                   </Link>
-                   <Link to="/signup" className='signup'>
-                    <li><IoPersonOutline /></li>
-                   </Link> */}
                     <li className='logout' onClick={logOut}>Logout</li>
              </ul>
              <button className='mobile-menu-icon'

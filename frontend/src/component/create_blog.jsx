@@ -13,6 +13,7 @@ export default function Crt_blg() {
       navigate("/signup")
     }
   })
+  
   const [formData, setFormData] = useState({
     title: "",
     description: "", // Corrected typo here
@@ -110,7 +111,9 @@ export default function Crt_blg() {
           <br></br>
           {spinner ? (
             <button type="submit" className="post_btn" disabled>
+              <center>
               <div class="loader"></div>
+              </center>
             </button>
           ) : (
             <button type="submit" className="post_btn">
