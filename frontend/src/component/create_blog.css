@@ -28,15 +28,14 @@
   width: 96%;
 }
 
-.latest_blog {
-  border-bottom: 1px solid rgb(200, 200, 200);
-  margin-top: 5px;
-}
+
 
 .latest_blog .blogs {
   text-align: left;
-  margin: 25px 30px;
-  max-width: 800px;
+  margin: 25px auto; 
+  width: 800px; 
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 20px;
 }
 
 .all_blogs {
@@ -45,6 +44,21 @@
   align-items: center;
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 800px) {
+  .latest_blog .blogs {
+    width: 100%; 
+    border: none;
+    padding: 0px ; /* Center the element horizontally */
+  }
+
+  .all_blogs {
+    border-bottom: 1px solid rgb(200, 200, 200);
+    align-items: start;
+    margin: 0px 20px 0px 20px;
+
+}}
 
 .decription_sec_inner{
   width: 65%;
@@ -94,4 +108,13 @@ color: rgb(91, 91, 91);}
 .datenow{font-size: 14px;
   color: rgb(91, 91, 91);}
 
-  
+.avtar_blog{background-color: rgb(255, 255, 255);
+border: solid 4px black;
+height: 50px;
+width: 50px;
+color: rgb(0, 0, 0);
+border-radius: 50%;} 
+
+
+
+

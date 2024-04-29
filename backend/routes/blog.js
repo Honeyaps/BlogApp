@@ -66,7 +66,7 @@ blogRouter.post("/create_post", multiple , async (req, res) => {
   }
 });
 
-// api for get blog
+// api for read blogs
 blogRouter.get("/getblog", async (req, res) => {
   try {
     const response = await Blog.find({});
@@ -77,5 +77,19 @@ blogRouter.get("/getblog", async (req, res) => {
     return res.status(403).json({ msg: "error while getting blogs" });
   }
 });
+
+// api for get userdata
+// blogRouter.get("/userdata", async (req, res) => {
+//   try {
+//     const response = await Blog.find({
+//       userId: req.userId
+//     });
+//     return res.json({
+//       userIds: response,
+//     });
+//   } catch (error) {
+//     return res.status(403).json({ msg: "error while getting blogs" });
+//   }
+// });
 
 module.exports = blogRouter;

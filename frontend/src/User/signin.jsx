@@ -63,7 +63,7 @@ const SigninForm = () => {
                     <input type="password" name="password" value={formData.password} onChange={handleChange} />
                     {errors.password && <span className="error">{errors.password}</span>}
                 </div>
-                <Link to='#' className='frgt_pass'>Forgott Password</Link>
+                <Link to='/email' className='frgt_pass'>Forgott Password</Link>
                 <br></br><br></br>
                 <button type="submit" className='form_btn'>Sign in</button>
                 <p className='lower_txt'>Create a new account? <Link to='/signup'>SignUp</Link></p>

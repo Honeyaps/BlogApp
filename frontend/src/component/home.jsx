@@ -13,11 +13,13 @@ export default function Home() {
     async function serverCall() {
       const response = await axios.get("blog/getblog");
       setBlog(response.data.blog);
-      console.log(response.data.blog)
+      console.log(response.data.blog);
     }
     serverCall();
   }, []);
-  
+
+  const userName = localStorage.getItem("name")?.slice(0, 1);
+
   return (
     <>
       <Navbar />
@@ -25,6 +27,7 @@ export default function Home() {
         {blog.map((item, index) => (
           <div key={index}>
             <Blog
+              userName={item.userName}
               title={item.title}
               description={item.description}
               image={item.img}

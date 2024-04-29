@@ -2,14 +2,14 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 55px;
+  height: 75px;
   background-color: #000000;
   color: rgb(251, 248, 248);
 }
@@ -20,7 +20,7 @@
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.logo_link{
+.logo_link {
   color: white;
   text-decoration: none;
 }
@@ -35,26 +35,55 @@
 .home,
 .social,
 .logout,
-.crt_blog {
+.crt_blog,
+.avtar {
   text-decoration: none;
   font-size: 17px;
   padding: 10px 20px;
-  margin: 0 10px;
+  margin: 0 15px;
   cursor: pointer;
   color: rgb(166, 166, 166);
 }
 
-.home:hover{color: white;}
-.social:hover{color: white;}
-.logout:hover{color: white;}
+.avtar {
+  border: solid white 2px;
+  border-radius: 100%;
+  height: 52px;
+  width: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: rgb(209, 209, 209);
+  color: #151515;
+}
 
-.crt_blog{border: white 2px solid;
-background-color: rgb(169, 169, 169);
-color: black;
-border-radius: 15px;}
+.home:hover {
+  color: white;
+  transition: 0.1s ease-in;
+}
+.social:hover {
+  color: white;
+  transition: 0.1s ease-in;
+}
+.logout:hover {
+  color: white;
+  transition: 0.1s ease-in;
+}
+.avtar:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.1s ease-in;
+}
 
-.crt_blog:hover{background-color:  rgb(207, 207, 207) ;
-transition: 0.1s ease-in;}
+.crt_blog {
+  border: white 2px solid;
+  background-color: rgb(209, 209, 209);
+  color: black;
+  border-radius: 15px;
+}
+
+.crt_blog:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.1s ease-in;
+}
 
 .mobile-menu-icon {
   display: none;
@@ -87,23 +116,30 @@ transition: 0.1s ease-in;}
   }
 
   .home,
-.social,
-.logout,
-.crt_blog  {
+  .social,
+  .logout,
+  .crt_blog,
+  .avtar {
     text-align: center;
     padding: 32px;
     width: 100%;
     transition: all 0.5s ease;
   }
 
-  .logout{margin-top: -25px;
-  margin-left: 0px;}
+  .logout {
+    margin-top: -25px;
+    margin-left: 0px;
+  }
 
-  .crt_blog{border: none;
-  background-color: transparent;
-color:white;}
+  .crt_blog {
+    border: none;
+    background-color: transparent;
+    color: white;
+  }
 
-.crt_blog:hover{background-color: transparent;}
+  .crt_blog:hover {
+    background-color: transparent;
+  }
 
   .mobile-menu-icon {
     display: block;
@@ -115,9 +151,25 @@ color:white;}
     outline: none;
     top: 12px;
     right: 30px;
+    cursor: pointer;
   }
-  
-  .img_prod{width: 250px;}
 
-  .view_title{font-size:  25px;}
+  .img_prod {
+    width: 250px;
+  }
+
+  .view_title {
+    font-size: 25px;
+  }
+
+  .avtar {
+    border:none;
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  .avtar:hover {
+    background-color: transparent;
+  }
+
 }

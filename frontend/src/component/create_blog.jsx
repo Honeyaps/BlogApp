@@ -78,21 +78,24 @@ export default function Crt_blg() {
         <form onSubmit={handleSubmit}>
           <h1>Create a new Blog</h1>
           <br></br>
-          <LabeledInput
+          <label>
+            <h4>Title</h4>
+            <input
             type="text"
             placeholder="Title"
-            name="title" // Corrected capitalization here
-            onChange={handleChange}
-            errors={errors.title}
-          />
+            name="title"
+            onChange={handleChange}/>
+            {errors.title && (
+              <span className="error">{errors.title}</span>
+            )}
+          </label>
           <br></br>
           <label>
-            <h9>Description</h9>
-            <br></br>
+            <h4>Description</h4>
             <textarea
               type="text"
               className="description_sec"
-              name="description" // Corrected capitalization here
+              name="description" 
               onChange={handleChange}
             />
             {errors.description && (
@@ -100,14 +103,15 @@ export default function Crt_blg() {
             )}
           </label>
           <br></br>
-          <LabeledInput
+          <label>
+            <input
             type="file"
             placeholder="Insert Image"
             onChange={(e) => {
-              setImage(e.target.files[0]); // Corrected setting image state
+              setImage(e.target.files[0]); 
             }}
-            name="Image: "
-          />
+            name="Image: "/>
+            </label>
           <br></br>
           {spinner ? (
             <button type="submit" className="post_btn" disabled>
@@ -126,17 +130,4 @@ export default function Crt_blg() {
   );
 }
 
-function LabeledInput({ type, placeholder, name, onChange, errors }) {
-  return (
-    <label>
-      <h4>{name}</h4>
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        onChange={onChange}
-      />
-      {errors && <span className="error">{errors}</span>}
-    </label>
-  );
-}
+
