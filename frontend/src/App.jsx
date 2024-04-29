@@ -5,6 +5,8 @@ import SigninForm from './User/signin';
 import Crt_blg from './component/create_blog';
 import ViewBlog from './component/View';
 import Email from './Forgot/email';
+import Reset from './Forgot/resetpass';
+import Otp from './Forgot/otp';
 
 
 export default function App(){
@@ -19,6 +21,8 @@ export default function App(){
             <Route path="/create_blog" element={<Crt_blg />}></Route>
             <Route path="/view" element={<ViewBlog />}></Route>
             <Route path="/email" element={<Email />}></Route>
+            <Route path="/otp" element={<Otp />}></Route>
+            <Route path="/reset" element={<Reset />}></Route>
 
 
         </Routes>

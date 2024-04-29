@@ -32,10 +32,11 @@
 
 .latest_blog .blogs {
   text-align: left;
-  margin: 25px auto; 
+  margin: 10px auto; 
   width: 800px; 
   border-bottom: 1px solid rgb(200, 200, 200);
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  
 }
 
 .all_blogs {
@@ -50,11 +51,11 @@
   .latest_blog .blogs {
     width: 100%; 
     border: none;
-    padding: 0px ; /* Center the element horizontally */
+    padding: 0px ;
+     /* Center the element horizontally */
   }
 
   .all_blogs {
-    border-bottom: 1px solid rgb(200, 200, 200);
     align-items: start;
     margin: 0px 20px 0px 20px;
 
@@ -102,10 +103,10 @@
 .img_prod{max-width: 500px;
 height: auto;}
 
-.desc_sec{font-size: 17px;
+.desc_sec{font-size: 15px;
 color: rgb(91, 91, 91);}
 
-.datenow{font-size: 14px;
+.datenow{font-size: 13px;
   color: rgb(91, 91, 91);}
 
 .avtar_blog{background-color: rgb(255, 255, 255);
