@@ -18,7 +18,6 @@ export default function Home() {
     serverCall();
   }, []);
 
-  const userName = localStorage.getItem("name")?.slice(0, 1);
 
   return (
     <>
@@ -27,7 +26,6 @@ export default function Home() {
         {blog.map((item, index) => (
           <div key={index}>
             <Blog
-              userName={item.userName}
               title={item.title}
               description={item.description}
               image={item.img}

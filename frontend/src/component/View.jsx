@@ -12,9 +12,10 @@ export default function ViewBlog() {
       <Navbar />
       <center>
       <div className="viewpage_contnr">
+        <br/>
+        <p className="view_date">{product.dates}</p>
         <h1 className="view_title">{product.title}</h1>
-        <h1 className="avtar_blog">{product.userName}</h1>
-        <h1 className="view_date">{product.dates}</h1>
+        
         <br></br>
         <img src={product.image} className="img_prod"/>
         <br></br><br></br>

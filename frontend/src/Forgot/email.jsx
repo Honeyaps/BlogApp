@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:4500";
 
 const Email = () => {
   const [formData, setFormData] = useState({
     email: "",
   });
+
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -26,12 +30,20 @@ const Email = () => {
     setErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-        try {
-            navigate("/otp")
-        } catch (error) {
-            console.error("Error:", error);
-            alert("user not found")
-        }
+      try {
+        const otp = Math.floor(1000 + Math.random() * 9000);
+
+        const response = await axios.post("/user/otp", {
+          email: formData.email,
+          OTP: otp,
+        });
+        localStorage.setItem("Email",response.data);
+        navigate("/otp", { state: { otp: { otp } } });
+
+      } catch (error) {
+        console.error("Error:", error);
+        alert("user not found");
+      }
     }
   };
 
