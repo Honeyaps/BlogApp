@@ -28,15 +28,12 @@
   width: 96%;
 }
 
-
-
 .latest_blog .blogs {
   text-align: left;
-  margin: 10px auto; 
-  width: 800px; 
+  margin: 10px auto;
+  width: 800px;
   border-bottom: 1px solid rgb(200, 200, 200);
   padding-bottom: 10px;
-  
 }
 
 .all_blogs {
@@ -46,28 +43,29 @@
   cursor: pointer;
 }
 
-
 @media screen and (max-width: 800px) {
   .latest_blog .blogs {
-    width: 100%; 
+    width: 100%;
     border: none;
-    padding: 0px ;
-     /* Center the element horizontally */
+    padding: 0px;
+    /* Center the element horizontally */
   }
 
   .all_blogs {
     align-items: start;
     margin: 0px 20px 0px 20px;
+  }
+}
 
-}}
-
-.decription_sec_inner{
+.decription_sec_inner {
   width: 65%;
 }
 
 /* for spinner */
 
-.post_btn .loader{justify-content: center;}
+.post_btn .loader {
+  justify-content: center;
+}
 
 .loader {
   border: 3px solid #fff;
@@ -100,21 +98,25 @@
   }
 }
 
-.img_prod{max-width: 500px;
-height: auto;}
+.img_prod {
+  max-width: 500px;
+  height: auto;
+}
 
-.desc_sec{font-size: 15px;
-color: rgb(91, 91, 91);}
+.desc_sec {
+  font-size: 15px;
+  color: rgb(91, 91, 91);
+}
 
-.datenow{font-size: 13px;
-  color: rgb(91, 91, 91);}
+.datenow {
+  font-size: 13px;
+}
 
-
-
-
-
-
-
-
-
-
+.blog_avtar {
+  border: solid rgb(62, 62, 62) 1px;
+  border-radius: 100%;
+  width: 55px;
+  padding: 8px 16px;
+  background-color: rgb(65, 65, 65);
+  color: #ffffff;
+}

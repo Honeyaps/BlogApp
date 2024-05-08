@@ -38,7 +38,8 @@ const blogSchema = new mongoose.Schema({
   description: String,
   img: String,
   date: Date,
-  userId: String
+  userId: String,
+  authorName: String
 });
 
 const Blog = mongoose.model("blog", blogSchema);

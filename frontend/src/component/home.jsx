@@ -13,11 +13,10 @@ export default function Home() {
     async function serverCall() {
       const response = await axios.get("blog/getblog");
       setBlog(response.data.blog);
-      console.log(response.data.blog);
+      // console.log(response.data.blog);
     }
     serverCall();
   }, []);
-
 
   return (
     <>
@@ -26,6 +25,7 @@ export default function Home() {
         {blog.map((item, index) => (
           <div key={index}>
             <Blog
+              author={item.authorName}
               title={item.title}
               description={item.description}
               image={item.img}

@@ -1,9 +1,8 @@
 const express = require("express");
 const zod = require("zod");
 
-const { storage } = require("../db");
+const { storage,Blog,User } = require("../db");
 const multer = require("multer");
-const { Blog } = require("../db");
 const {
   ref,
   getDownloadURL,
@@ -20,10 +19,10 @@ const zodvalidation = zod.object({
 
 const upload = multer({ storage: multer.memoryStorage() });
 const multiple = [Auth, upload.single('filename')]
+
 // api for creating blog
 blogRouter.post("/create_post", multiple , async (req, res) => {
   const body = req.body;
-  console.log(body);
   if (!req.file) {
     console.log("file not uploaded");
   }
@@ -49,12 +48,17 @@ blogRouter.post("/create_post", multiple , async (req, res) => {
     );
     const downloadURL = await getDownloadURL(snapshot.ref);
 
+    const author = await  User.findById(req.userId)
+    console.log(author)
+    
+
     const blog = await Blog.create({
       title: body.title,
       description: body.description,
       img: downloadURL,
       date: Date.now(),
-      userId: req.userId
+      userId: req.userId,
+      authorName: author.firstname
     });
 
     return res.json({
@@ -77,19 +81,5 @@ blogRouter.get("/getblog", async (req, res) => {
     return res.status(403).json({ msg: "error while getting blogs" });
   }
 });
-
-// api for get userdata
-// blogRouter.get("/userdata", async (req, res) => {
-//   try {
-//     const response = await Blog.find({
-//       userId: req.userId
-//     });
-//     return res.json({
-//       userIds: response,
-//     });
-//   } catch (error) {
-//     return res.status(403).json({ msg: "error while getting blogs" });
-//   }
-// });
 
 module.exports = blogRouter;

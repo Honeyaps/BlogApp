@@ -2,8 +2,9 @@ const express = require("express");
 const zod = require("zod");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { User } = require("../db");
+const { User , Blog} = require("../db");
 const { sendEmail } = require("./nodemailer");
+const  Auth  = require("../middleware/auth");
 
 require("dotenv").config();
 const userRouter = express.Router();
@@ -81,14 +82,14 @@ userRouter.post("/signin", async (req, res) => {
 
       return res.json({
         name: checks.firstname,
-        token: token,
+        token: token
       });
     } else {
       return res.status(403).json({ msg: "incorrect password" });
     }
   } catch (error) {
     console.log(error);
-    return res.status(403).json({ msg: "error while signing in" });
+    return res.status(404).json({ msg: "error while signing in" });
   }
 });
 
@@ -111,7 +112,7 @@ userRouter.post("/otp", async (req, res) => {
       })
       .catch((response) => {
         return res.send(response.msg);
-      });
+      })
   } catch (error) {
     console.log(error);
     return res.status(403).json({ msg: "error while signing in" });
@@ -121,20 +122,22 @@ userRouter.post("/otp", async (req, res) => {
 // for update password after otp
 userRouter.put("/newpass", async (req, res) => {
   const body = req.body;
-  // console.log(body.email)
 
-  // const check = await User.findOne({
-  //   email: body.email
-  // })
+  const salt = await bcrypt.genSalt(10);
+  const securePass = await bcrypt.hash(body.password, salt);
 
-  // if(check.password === body.password){
-  //   return res.status(403).json({msg: "try new password"})
-  // }
+  const check = await User.findOne({
+    email: body.email
+  })
+
+  if(check.password === body.password){
+    return res.status(403).json({msg: "try new password"})
+  }
 
   try {
     const response = await User.updateOne(
       { email: body.email },
-      { password: body.password }
+      { password: securePass }
     );
     return res.json({ msg: "password updated" });
   } catch (error) {
@@ -143,4 +146,24 @@ userRouter.put("/newpass", async (req, res) => {
   }
 });
 
+// api for get userdata
+userRouter.get("/userdata",Auth, async (req, res) => {
+  try {
+    const response = await User.findById(req.userId);
+    const blogs = await Blog.find({
+      userId: req.userId
+    })
+    return res.json({
+      username: response.username,
+      email: response.email,
+      blogs
+    });
+  } catch (error) {
+    console.log(error)
+    return res.status(403).json({ msg: "error while getting blogs" });
+  }
+});
+
 module.exports = userRouter;
+
+

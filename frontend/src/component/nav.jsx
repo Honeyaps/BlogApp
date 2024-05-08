@@ -37,7 +37,7 @@ export default function Navbar() {
         onClick={() => setIsMobile(false)}
       >
         {login ? (
-          <Link to="/" className="avtar">
+          <Link to="/userdata" className="avtar">
             <li>{userName}</li>
           </Link>
         ) : null}

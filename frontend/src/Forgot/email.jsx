@@ -35,7 +35,7 @@ const Email = () => {
 
         const response = await axios.post("/user/otp", {
           email: formData.email,
-          OTP: otp,
+          OTP: otp
         });
         localStorage.setItem("Email",response.data);
         navigate("/otp", { state: { otp: { otp } } });

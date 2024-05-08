@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+axios.defaults.baseURL = "http://localhost:4500";
+
 const SigninForm = () => {
     const [formData, setFormData] = useState({
         email: '',
@@ -37,12 +39,12 @@ const SigninForm = () => {
 
         if (Object.keys(errors).length === 0) {
             try {
-                const response = await axios.post("http://localhost:4500/user/signin",formData)
+                const response = await axios.post("/user/signin",formData)
                 localStorage.setItem("token",response.data.token)
                 localStorage.setItem("name",response.data.name)
                 navigate("/")
             } catch (error) {
-                console.error("Error:", error);
+                
                 alert("user not found")
             }
         }
