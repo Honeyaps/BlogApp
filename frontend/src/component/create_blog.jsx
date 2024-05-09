@@ -8,19 +8,18 @@ axios.defaults.baseURL = "http://localhost:4500/";
 
 export default function Crt_blg() {
   const navigate = useNavigate();
-  useEffect(()=>{
-    if(!localStorage.getItem("token")){
-      navigate("/signup")
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/signup");
     }
-  })
-  
+  });
+
   const [formData, setFormData] = useState({
     title: "",
     description: "", // Corrected typo here
   });
   const [image, setImage] = useState(null);
   const [spinner, setSpinner] = useState(false);
-  
 
   const [errors, setErrors] = useState({});
 
@@ -31,7 +30,6 @@ export default function Crt_blg() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     let errors = {};
     if (!formData.title) {
       errors.title = "Title is required";
@@ -48,16 +46,13 @@ export default function Crt_blg() {
       data.append("title", formData.title);
       data.append("description", formData.description);
       data.append("filename", image);
-
-      console.log(data);
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       try {
-        const response = await axios.post("/blog/create_post",data,{
-          headers:{
-            Authorization: token
-          }
+        const response = await axios.post("/blog/create_post", data, {
+          headers: {
+            Authorization: token,
+          },
         });
-        console.log(response);
         // Clear form data after successful submission if needed
         setFormData({
           title: "",
@@ -66,7 +61,7 @@ export default function Crt_blg() {
         navigate("/");
       } catch (error) {
         console.error("Error:", error);
-        alert("cannot add blog")
+        alert("cannot add blog");
       }
     }
   };
@@ -81,13 +76,12 @@ export default function Crt_blg() {
           <label>
             <h4>Title</h4>
             <input
-            type="text"
-            placeholder="Title"
-            name="title"
-            onChange={handleChange}/>
-            {errors.title && (
-              <span className="error">{errors.title}</span>
-            )}
+              type="text"
+              placeholder="Title"
+              name="title"
+              onChange={handleChange}
+            />
+            {errors.title && <span className="error">{errors.title}</span>}
           </label>
           <br></br>
           <label>
@@ -95,7 +89,7 @@ export default function Crt_blg() {
             <textarea
               type="text"
               className="description_sec"
-              name="description" 
+              name="description"
               onChange={handleChange}
             />
             {errors.description && (
@@ -105,18 +99,19 @@ export default function Crt_blg() {
           <br></br>
           <label>
             <input
-            type="file"
-            placeholder="Insert Image"
-            onChange={(e) => {
-              setImage(e.target.files[0]); 
-            }}
-            name="Image: "/>
-            </label>
+              type="file"
+              placeholder="Insert Image"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+              name="Image: "
+            />
+          </label>
           <br></br>
           {spinner ? (
             <button type="submit" className="post_btn" disabled>
               <center>
-              <div class="loader"></div>
+                <div className="loader"></div>
               </center>
             </button>
           ) : (
@@ -129,5 +124,3 @@ export default function Crt_blg() {
     </>
   );
 }
-
-

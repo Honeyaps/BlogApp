@@ -159,3 +159,14 @@
       right: 0;
     }
   }
+
+/* userdata */
+
+table{
+text-align: center;
+width: 100%;
+padding: 20px 0px;}
+
+table th{background-color: rgb(255, 237, 214);}
+
+table tbody td{border-bottom: solid 1px black;}

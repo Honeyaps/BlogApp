@@ -13,6 +13,7 @@ export default function ViewBlog() {
       <center>
       <div className="viewpage_contnr">
         <br/>
+        
         <p className="view_date">{product.dates}</p>
         <h1 className="view_title">{product.title}</h1>
         

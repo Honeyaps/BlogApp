@@ -158,6 +158,7 @@ userRouter.get("/userdata",Auth, async (req, res) => {
       email: response.email,
       blogs
     });
+    
   } catch (error) {
     console.log(error)
     return res.status(403).json({ msg: "error while getting blogs" });
