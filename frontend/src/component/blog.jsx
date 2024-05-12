@@ -16,10 +16,10 @@ export default function Blog({ title, description, image, date, author }) {
       <div className="blogs">
         <div className="datenow">
           <h1 className="blog_avtar">{author?.slice(0, 1)}</h1>
-          <p>{dates}</p>
+          <p className="desc_sec">{dates}</p>
         </div>
-        <h2>{title}</h2>
-        <p className="desc_sec">{description?.slice(0, 100) + "..."}</p>
+        <h2 className="blog_title">{title}</h2>
+        <p className="desc_sec">{description?.slice(0, 180) + "..."}</p>
       </div>
     </div>
   );

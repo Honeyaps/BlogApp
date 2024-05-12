@@ -1,175 +1,129 @@
 * {
-  margin: 0%;
-  padding: 0%;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 70px;
-  background-color: #000000;
-  color: rgb(251, 248, 248);
+  background-color: #e5e5e5;
+  color: #000;
+  height: 30px;
+  padding: 20px 10px;
+}
+
+.links {
+  display: flex;
+}
+
+.links li {
+  list-style: none;
+  margin-left: 100px;
+  cursor: pointer;
+}
+
+.logo-link,
+.create-blog,
+.home,
+.social,
+.avatar {
+  text-decoration: none;
+  color: #000;
+}
+
+.logout-btn {
+  padding: 2px 14px;
+  border-radius: 10px;
+  background-color: orange;
+  cursor: pointer;
+  background-color: #e5e5e5;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .logo {
-  font-size: 30px;
   cursor: pointer;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.logo_link {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: end;
-  list-style: none;
-  width: 75%;
-}
-
-.home,
-.social,
-.logout,
-.crt_blog,
-.avtar {
-  text-decoration: none;
-  font-size: 17px;
-  padding: 12.5px 20px;
-  margin: 0 15px;
-  cursor: pointer;
-  color: rgb(166, 166, 166);
-}
-
-.avtar {
-  border: solid white 2px;
-  border-radius: 100%;
-  height: 55px;
-  width: 60px;
-  font-size: 20px;
-  font-weight: 700;
-  background-color: rgb(209, 209, 209);
-  color: #151515;
-}
-
-.home:hover {
-  color: white;
-  transition: 0.1s ease-in;
-}
-.social:hover {
-  color: white;
-  transition: 0.1s ease-in;
-}
-.logout:hover {
-  color: white;
-  transition: 0.1s ease-in;
-}
-.avtar:hover {
-  background-color: rgb(255, 255, 255);
-  transition: 0.1s ease-in;
-}
-
-.crt_blog {
-  border: white 2px solid;
-  background-color: rgb(209, 209, 209);
-  color: black;
-  border-radius: 15px;
-}
-
-.crt_blog:hover {
-  background-color: rgb(255, 255, 255);
-  transition: 0.1s ease-in;
-}
-
-.mobile-menu-icon {
+.mobile-navbar,
+.menu-btn {
   display: none;
 }
 
-@media screen and (max-width: 880px) {
-  .logo {
-    display: flex;
-    position: absolute;
-    font-size: 25px;
-    top: 15px;
-    left: 80px;
-    margin-left: -60px;
-  }
+.avatar {
+  margin-right: 40px;
+  font-weight: 600;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 50%;
+}
 
-  .nav-links {
-    display: none;
-  }
+.mob_avtar {
+  display: flex;
+}
 
-  .nav-links-mobile {
-    position: absolute;
+@media screen and (max-width: 980px) {
+  .menu-btn {
     display: block;
-    list-style: none;
-    background-color: #000000;
-    left: 0%;
-    top: 55px;
-    transition: all 1.5s ease-out;
-    width: 100%;
-    z-index: 1;
-  }
-
-  .home,
-  .social,
-  .logout,
-  .crt_blog,
-  .avtar {
-    text-align: center;
-    padding: 32px;
-    width: 100%;
-    transition: all 0.5s ease;
-  }
-
-  .logout {
-    margin-top: -25px;
-    margin-left: 0px;
-  }
-
-  .crt_blog {
     border: none;
-    background-color: transparent;
-    color: white;
-  }
-
-  .crt_blog:hover {
-    background-color: transparent;
-  }
-
-  .mobile-menu-icon {
-    display: block;
-    position: absolute;
-    font-size: 32px;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    border: none;
-    outline: none;
-    top: 12px;
-    right: 30px;
+    font-size: 30px;
+    background-color: #e5e5e5;
     cursor: pointer;
   }
 
-  .img_prod {
-    width: 250px;
+  .links {
+    display: none;
   }
 
-  .view_title {
+  .logout-btn {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    background-color: #e5e5e5;
+    z-index: 1;
+  }
+
+  .mobile-links li {
+    margin: 20px 0;
+  }
+
+  .mob_avtar {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navbar {
+    height: 10px;
+  }
+
+  .logo{
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+  }
+
+  .avatar {
+    margin-right: 20px;
+    font-size: 15px;
+    padding: 8px 15px;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+  }
+
+  .menu-btn {
+    
     font-size: 25px;
+    transition: 0.2s ease-in-out;
+    
   }
-
-  .avtar {
-    border:none;
-    color: #ffffff;
-    background-color: transparent;
-  }
-
-  .avtar:hover {
-    background-color: transparent;
-  }
-
 }

@@ -1,69 +1,90 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./nav.css";
-import { useState } from "react";
-import { IoMdMenu } from "react-icons/io";
-import { FaTimes } from "react-icons/fa";
 import { FaBlog } from "react-icons/fa";
-import { useEffect } from "react";
+import { BiMenu } from "react-icons/bi";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
+  const [mobile, setMobile] = useState(false);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setLogin(!login);
+      setLogin(true);
     }
   }, []);
 
   const userName = localStorage.getItem("name")?.slice(0, 1);
+
   function logOut() {
     localStorage.removeItem("token");
+    setLogin(false);
     navigate("/signup");
   }
 
+  function handleLinkClick() {
+    setMobile(false); 
+  }
+
   return (
-    <nav className="navbar">
-      <Link to="/" className="logo_link">
-        <h3 className="logo">
-          BLOGGER <FaBlog />
-        </h3>
-        
-      </Link>
-      <ul
-        className={isMobile ? "nav-links-mobile" : "nav-links"}
-        onClick={() => setIsMobile(false)}
-      >
-        {login ? (
-          <Link to="/userdata" className="avtar">
-            <li>{userName}</li>
-          </Link>
-        ) : null}
-        <Link to="/create_blog" className="crt_blog">
-          <li>Create a Blog</li>
+    <>
+      <div className="navbar">
+        <Link to="/" className="logo-link">
+          <h1 className="logo">
+            BLOGGER <FaBlog />
+          </h1>
         </Link>
-       
-        <Link to="/" className="home">
-          <li>Home</li>
-        </Link>
-        <Link to="" className="social">
-          <li>Social</li>
-        </Link>
-        {login ? (
-          <li className="logout" onClick={logOut}>
-            Logout
-          </li>
-        ) : null}
-      </ul>
-      
-      <button
-        className="mobile-menu-icon"
-        onClick={() => setIsMobile(!isMobile)}
-      >
-        {isMobile ? <FaTimes /> : <IoMdMenu />}
-      </button>
-    </nav>
+        <div>
+          <ul className="links">
+            <Link to="/create_blog" className="create-blog" onClick={handleLinkClick}>
+              <li>Create a Blog</li>
+            </Link>
+            <Link to="/" className="home" onClick={handleLinkClick}>
+              <li>Home</li>
+            </Link>
+            <Link to="" className="social" onClick={handleLinkClick}>
+              <li>Social</li>
+            </Link>
+          </ul>
+        </div>
+        <div className="mob_avtar">
+          {login ? (
+            <Link to="/userdata" className="avatar" onClick={handleLinkClick}>
+              {userName}
+            </Link>
+          ) : null}
+          {login ? (
+            <button className="logout-btn" onClick={logOut}>
+              Logout
+            </button>
+          ) : null}
+          <button className="menu-btn" onClick={() => setMobile(!mobile)}>
+            <BiMenu />
+          </button>
+        </div>
+      </div>
+
+      {mobile && (
+        <div className="mobile-navbar">
+          <ul className="mobile-links">
+            <Link to="/create_blog" className="create-blog" onClick={handleLinkClick}>
+              <li>Create a Blog</li>
+            </Link>
+            <Link to="/" className="home" onClick={handleLinkClick}>
+              <li>Home</li>
+            </Link>
+            <Link to="" className="social" onClick={handleLinkClick}>
+              <li>Social</li>
+            </Link>
+            {login && (
+              <li className="logout" onClick={logOut}>
+                Logout
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }

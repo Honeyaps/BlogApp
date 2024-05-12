@@ -44,20 +44,23 @@ export default function Homeuser() {
     <>
       <Navbar />
       <div className="all_blogs">
-        <div>
+        <div className="avtar_portion">
+        <div className="logo_avtar">
           <h1>{localStorage.getItem("name")?.slice(0, 1)}</h1>
         </div>
 
-        <div>
+        <div className="userdata">
           <h1>Username: {user.username}</h1>
           <h1>Email: {user.email}</h1>
           <h1>Blog: {user.blogs.length}</h1>
         </div>
+        </div>
 
         <br />
-        <br />
+        
         {user.blogs && user.blogs.length > 0 ? (
-        <table>
+        <table  >
+          
           <thead>
           <tr>
             <th>Sr.no</th>
@@ -68,20 +71,21 @@ export default function Homeuser() {
           </tr>
           </thead>
           
-            <tbody>
+            <tbody >
+              
               {user.blogs.map((item, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td><img src={item.img} height={50}></img></td>
-                  <td>{item.title.toString().slice(0, 20)}</td>
+                  <td>{index + 1}.</td>
+                  <td><img src={item.img} height={50} className="user_img"></img></td>
+                  <td><h4>{item.title.toString().slice(0, 20)}</h4></td>
                   <td>{item.date.toString().slice(0, 10)}</td>
                   <td>
-                    <button
+                    <button className="dlt_btn"
                       onClick={() => {
                         deleteBlog(item._id);
                       }}
                     >
-                      <RiDeleteBin6Line />
+                      <RiDeleteBin6Line className="dlt"/>
                     </button>
                   </td>
                 </tr>
@@ -96,3 +100,6 @@ export default function Homeuser() {
     </>
   );
 }
+
+
+

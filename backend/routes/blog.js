@@ -49,7 +49,7 @@ blogRouter.post("/create_post", multiple, async (req, res) => {
     const downloadURL = await getDownloadURL(snapshot.ref);
 
     const author = await User.findById(req.userId);
-    console.log(author);
+  
 
     const blog = await Blog.create({
       title: body.title,

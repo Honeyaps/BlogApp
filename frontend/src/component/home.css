@@ -167,6 +167,62 @@ text-align: center;
 width: 100%;
 padding: 20px 0px;}
 
-table th{background-color: rgb(255, 237, 214);}
+table th{background-color: rgb(222, 222, 222);
+padding: 7px 10px ;}
 
 table tbody td{border-bottom: solid 1px black;}
+
+.avtar_portion{display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 150px;
+}
+
+.logo_avtar{margin-top: 20px;
+  font-size: 40px;
+  border: 1px solid black;
+  background-color: rgb(56, 56, 56);
+  padding: 23px 50px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.userdata{margin-top: 30px;}
+
+.dlt_btn{font-size: 25px;
+border: none;
+background-color: white;
+cursor: pointer;}
+
+.dlt:hover{color: rgb(218, 0, 0);
+transition: 0.1s ease-in;}
+
+@media screen and (max-width: 730px) {
+
+  .avtar_portion{
+    column-gap: 50px;
+  }
+  
+  .userdata h1{font-size: 15px;}
+
+  .logo_avtar{
+    margin-top: 20px;
+  font-size: 20px;
+  border: 1px solid black;
+  background-color: rgb(56, 56, 56);
+  padding: 15px 30px;
+  border-radius: 50%;
+  color: #fff;
+  }
+
+  table th{background-color: rgb(222, 222, 222);
+    padding: 2px 5px ;
+  font-size: 9px;}
+
+  table tbody td{font-size: 7px;}
+
+  .user_img{height: 30px;
+  width: 40px;}
+
+  .dlt{font-size: 15px;}
+
+}

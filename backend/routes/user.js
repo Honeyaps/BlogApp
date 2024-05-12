@@ -21,7 +21,6 @@ const sigupValidation = zod.object({
 userRouter.post("/signup", async (req, res) => {
   const body = req.body;
   const success = sigupValidation.safeParse(body);
-  console.log(body);
 
   if (!success) {
     return res.status(403).json({ msg: "data is not valid" });
@@ -130,8 +129,11 @@ userRouter.put("/newpass", async (req, res) => {
     email: body.email
   })
 
-  if(check.password === body.password){
-    return res.status(403).json({msg: "try new password"})
+  const passcmpr = await bcrypt.compare(body.password, check.password);
+  if (passcmpr) {
+    return res.status(403).json({
+      msg: "same password again",
+    });
   }
 
   try {
