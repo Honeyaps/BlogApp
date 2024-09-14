@@ -1,12 +1,14 @@
 // connection
-
 const { initializeApp } = require("firebase/app");
 const { getStorage } = require("firebase/storage");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/NewsApp").then(() => {
+mongoose.connect("mongodb+srv://honeyaps12345:L2oux0cQoRO8yBaN@cluster0.pc9z2.mongodb.net/NewsApp").then(() => {
   console.log("mongodb connected");
 });
+
+
+
 
 // for firebase img db
 const firebaseConfig = {
