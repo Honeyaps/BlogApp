@@ -3,15 +3,14 @@ import "./home.css";
 import Navbar from "./nav";
 import axios from "axios";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
-axios.defaults.baseURL = "http://localhost:4500/";
+import axiosInstance from "../User/axiosConfig";
 
 export default function Homeuser() {
   const [user, setUser] = useState({ username: "", email: "", blogs: [] });
 
   useEffect(() => {
     async function serverCall() {
-      const response = await axios.get("user/userdata", {
+      const response = await axiosInstance.get("user/userdata", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -25,7 +24,7 @@ export default function Homeuser() {
 
   async function deleteBlog(id) {
     try {
-      const response = await axios.delete("blog/deleteblog", {
+      const response = await axiosInstance.delete("blog/deleteblog", {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

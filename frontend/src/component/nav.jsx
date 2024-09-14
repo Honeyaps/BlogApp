@@ -15,7 +15,7 @@ export default function Navbar() {
     }
   }, []);
 
-  const userName = localStorage.getItem("name")?.slice(0, 1);
+  const userName = localStorage.getItem("name")?.slice(0, 1).toUpperCase();
 
   function logOut() {
     localStorage.removeItem("token");

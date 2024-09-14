@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './signup.css'; // Import CSS file for styling
 import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
-
-axios.defaults.baseURL = "http://localhost:4500/";
+import axiosInstance from './axiosConfig';
 
 const SignupForm = () => {
     const [formData, setFormData] = useState({
@@ -56,7 +55,7 @@ const SignupForm = () => {
 
         if (Object.keys(errors).length === 0) {
             try {
-                const response = await axios.post("/user/signup", formData);
+                const response = await axiosInstance.post("/user/signup", formData);
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("name",response.data.name)
                 // Clear form data after successful submission if needed

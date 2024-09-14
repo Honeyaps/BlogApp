@@ -2,9 +2,8 @@ import Navbar from "./nav";
 import "./create_blog.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-axios.defaults.baseURL = "http://localhost:4500/";
+import { useEffect, useState } from "react"
+import axiosInstance from "../User/axiosConfig";
 
 export default function Crt_blg() {
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ export default function Crt_blg() {
       data.append("filename", image);
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.post("/blog/create_post", data, {
+        const response = await axiosInstance.post("/blog/create_post", data, {
           headers: {
             Authorization: token,
           },

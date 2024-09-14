@@ -3,15 +3,14 @@ import "./home.css";
 import Navbar from "./nav";
 import axios from "axios";
 import Blog from "./blog";
-
-axios.defaults.baseURL = "http://localhost:4500/";
+import axiosInstance from "../User/axiosConfig";
 
 export default function Home() {
   const [blog, setBlog] = useState([]);
 
   useEffect(() => {
     async function serverCall() {
-      const response = await axios.get("blog/getblog");
+      const response = await axiosInstance.get("blog/getblog");
       setBlog(response.data.blog);
       // console.log(response.data.blog);
     }
