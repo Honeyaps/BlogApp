@@ -19,6 +19,8 @@ app.use(function (req, res, next) {
     AccessControlAllowCredentials: "true",
   };
 
+  console.log(responseSettings);
+
   res.header("Access-Control-Allow-Credentials", responseSettings.AccessControlAllowCredentials);
   res.header("Access-Control-Allow-Origin", responseSettings.AccessControlAllowOrigin);
   res.header("Access-Control-Allow-Headers", req.headers["access-control-request-headers"] ? req.headers["access-control-request-headers"] : "x-requested-with");
@@ -29,6 +31,7 @@ app.use(function (req, res, next) {
     next();
   }
 });
+
 
 
 
