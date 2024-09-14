@@ -11,6 +11,10 @@ const  Auth  = require("../middleware/auth");
 
 const userRouter = express.Router();
 
+userRouter.get('/', (req, res) => {
+  res.send('User route works!');
+});
+
 const sigupValidation = zod.object({
   firstname: zod.string(),
   lastname: zod.string(),
