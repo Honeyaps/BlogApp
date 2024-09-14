@@ -4,7 +4,7 @@ const { initializeApp } = require("firebase/app");
 const { getStorage } = require("firebase/storage");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/NewsApp").then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/NewsApp").then(() => {
   console.log("mongodb connected");
 });
 

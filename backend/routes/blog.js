@@ -10,7 +10,9 @@ const {
 } = require("firebase/storage");
 const Auth = require("../middleware/auth");
 
-require("dotenv").config();
+
+
+
 const blogRouter = express.Router();
 const zodvalidation = zod.object({
   title: zod.string(),

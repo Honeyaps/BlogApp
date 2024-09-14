@@ -6,7 +6,9 @@ const { User , Blog} = require("../db");
 const { sendEmail } = require("./nodemailer");
 const  Auth  = require("../middleware/auth");
 
-require("dotenv").config();
+
+
+
 const userRouter = express.Router();
 
 const sigupValidation = zod.object({
