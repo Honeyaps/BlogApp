@@ -4,7 +4,9 @@ const userRouter = require("./routes/user");
 const blogRouter = require("./routes/blog");
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: true,
+}));
 app.use(express.json());
 
 // for registration
