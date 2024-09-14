@@ -22,6 +22,10 @@ app.use("/user", userRouter);
 // for create a blog
 app.use("/blog", blogRouter);
 
+router.get('/', (req, res) => {
+  res.send('User route works!');
+});
+
 app.listen(4500, () => {
   console.log("port connected");
 });
