@@ -43,7 +43,7 @@ const SigninForm = () => {
                 localStorage.setItem("name",response.data.name)
                 navigate("/")
             } catch (error) {
-                
+                console.log(error)
                 alert("user not found")
             }
         }
