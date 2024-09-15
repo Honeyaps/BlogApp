@@ -30,8 +30,6 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-
-
 const User = mongoose.model("user", userSchema);
 
 const blogSchema = new mongoose.Schema({

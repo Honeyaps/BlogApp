@@ -20,37 +20,41 @@ const upload = multer({ storage: multer.memoryStorage() });
 const multiple = [Auth, upload.single("filename")];
 
 // api for creating blog
+// Optimized API for creating blog
 blogRouter.post("/create_post", multiple, async (req, res) => {
-  const body = req.body;
-  if (!req.file) {
-    console.log("file not uploaded");
-  }
-
-  const success = zodvalidation.safeParse(body);
-  if (!success) {
-    return res.status(403).json({ msg: "invalid data" });
-  }
-
   try {
+    // Zod validation
+    const body = req.body;
+    const validationResult = zodvalidation.safeParse(body);
+    if (!validationResult.success) {
+      return res.status(400).json({ msg: "Invalid data" });
+    }
+
+    // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ msg: "File not uploaded" });
+    }
+
+    // Handle file upload and blog creation concurrently
     const dataTime = Date.now();
-    const storageRef = ref(
-      storage,
-      `ECommerce/${req.file.originalname + " " + dataTime}`
-    );
-    const metadata = {
-      contentType: req.file.mimetype,
-    };
-    const snapshot = await uploadBytesResumable(
-      storageRef,
-      req.file.buffer,
-      metadata
-    );
+    const filename = `${req.file.originalname}-${dataTime}`;
+    const storageRef = ref(storage, `ECommerce/${filename}`);
+
+    // Firebase upload metadata
+    const metadata = { contentType: req.file.mimetype };
+
+    // Start file upload
+    const uploadTask = uploadBytesResumable(storageRef, req.file.buffer, metadata);
+
+    // Fetch author details in parallel
+    const authorPromise = User.findById(req.userId);
+
+    // Wait for upload to complete and get the download URL
+    const [snapshot, author] = await Promise.all([uploadTask, authorPromise]);
     const downloadURL = await getDownloadURL(snapshot.ref);
 
-    const author = await User.findById(req.userId);
-  
-
-    const blog = await Blog.create({
+    // Save blog post to the database
+    await Blog.create({
       title: body.title,
       description: body.description,
       img: downloadURL,
@@ -59,12 +63,10 @@ blogRouter.post("/create_post", multiple, async (req, res) => {
       authorName: author.firstname,
     });
 
-    return res.json({
-      msg: "uploading done",
-    });
+    return res.json({ msg: "Upload successful" });
   } catch (error) {
-    console.log(error);
-    res.status(403).json({ msg: "uploading error" });
+    console.error(error);
+    return res.status(500).json({ msg: "Server error" });
   }
 });
 
