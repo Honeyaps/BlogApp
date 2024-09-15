@@ -18,6 +18,9 @@ const firebaseConfig = {
   measurementId: "G-QKXNVHBJCC",
 };
 
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+
 // user schema
 const userSchema = new mongoose.Schema({
   firstname: String,
@@ -27,8 +30,7 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+
 
 const User = mongoose.model("user", userSchema);
 
