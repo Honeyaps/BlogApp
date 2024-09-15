@@ -1,10 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const userRouter = require("./routes/user");
-const blogRouter = require("./routes/blog");
 const mainRouter = require("./mainRouter");
 const app = express();
-
 
 app.use(cors({
   origin: '*',
