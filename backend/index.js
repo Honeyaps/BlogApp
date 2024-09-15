@@ -9,7 +9,7 @@ app.use(cors({
   origin: ['https://blogger-api-kappa.vercel.app'],  
   methods: ["GET","POST","DELETE"], 
   credentials: true,
-  // allowedHeaders: "Content-Type, Authorization"  
+  allowedHeaders: "Content-Type, Authorization"  
 }));
 
 app.use(express.json());
