@@ -54,7 +54,7 @@ userRouter.post("/signup", async (req, res) => {
     console.log(error);
     return res.status(403).json({ msg: "error while signin up" });
   }
-});
+}); 
 
 // signin api
 userRouter.post("/signin", async (req, res) => {
