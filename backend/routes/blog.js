@@ -1,5 +1,6 @@
 const express = require("express");
 const zod = require("zod");
+const cors = require("cors");
 const { storage, Blog, User } = require("../db");
 const multer = require("multer");
 const {
