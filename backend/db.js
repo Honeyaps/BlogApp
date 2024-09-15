@@ -3,7 +3,7 @@ const { initializeApp } = require("firebase/app");
 const { getStorage } = require("firebase/storage");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://honeyaps12345:L2oux0cQoRO8yBaN@cluster0.pc9z2.mongodb.net/NewsApp").then(() => {
+mongoose.connect("mongodb+srv://honeyaps12345:L2oux0cQoRO8yBaN@cluster0.pc9z2.mongodb.net/NewsApp?retryWrites=true&w=majority&appName=Cluster0").then(() => {
   console.log("mongodb connected");
 });
 
