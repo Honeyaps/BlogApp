@@ -1,6 +1,5 @@
 const express = require("express");
 const zod = require("zod");
-const cors = require("cors");
 const { storage, Blog, User } = require("../db");
 const multer = require("multer");
 const {
@@ -11,13 +10,6 @@ const {
 const Auth = require("../middleware/auth");
 
 const blogRouter = express.Router();
-blogRouter.use(cors({
-  origin: '*',
-  methods: ["GET", "POST", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-
 
 const zodvalidation = zod.object({
   title: zod.string(),
