@@ -22,10 +22,8 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-// app.listen(4500, () => {
-//   console.log("port connected");
-// });
-
-module.exports = app;
+app.listen(4500, () => {
+  console.log("port connected");
+});
 
 
