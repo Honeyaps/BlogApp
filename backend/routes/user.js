@@ -6,14 +6,7 @@ const { User , Blog} = require("../db");
 const { sendEmail } = require("./nodemailer");
 const  Auth  = require("../middleware/auth");
 
-
-
-
 const userRouter = express.Router();
-
-userRouter.get('/', (req, res) => {
-  res.send('User route works!');
-});
 
 const sigupValidation = zod.object({
   firstname: zod.string(),
@@ -23,6 +16,11 @@ const sigupValidation = zod.object({
   password: zod.string().min(6),
 });
 
+userRouter.get("/", async (req, res) => {
+   res.json({
+     msg: "working for signup"
+   })
+})
 // for signup
 userRouter.post("/signup", async (req, res) => {
   const body = req.body;

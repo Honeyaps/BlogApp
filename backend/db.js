@@ -7,9 +7,6 @@ mongoose.connect("mongodb+srv://honeyaps12345:L2oux0cQoRO8yBaN@cluster0.pc9z2.mo
   console.log("mongodb connected");
 });
 
-
-
-
 // for firebase img db
 const firebaseConfig = {
   apiKey: "AIzaSyA93ltZGUFMyo_1KVRJKgdT5_7mWEF4E1A",

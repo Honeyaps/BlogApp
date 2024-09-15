@@ -22,6 +22,5 @@
     "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
     "zod": "^3.22.5"
-  },
-  "proxy": "https://blogger-api-kappa.vercel.app"
+  }
 }
