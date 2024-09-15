@@ -4,8 +4,9 @@ import axios from "axios";
 //   baseURL: "https://blogger-api-kappa.vercel.app"
 // });
 
+// local
 const axiosInstance = axios.create({
-  baseURL: "https://blogger-api-kappa.vercel.app/"
+  baseURL: "http://localhost:4500/v1"
 });
 
 export default axiosInstance;
