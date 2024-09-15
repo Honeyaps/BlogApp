@@ -6,8 +6,8 @@ const app = express();
 
 
 app.use(cors({
-  origin: ['https://blogger-api-kappa.vercel.app'],  
-  methods: ["GET","POST","DELETE"], 
+  origin: '*',
+  methods: ["GET", "POST", "DELETE", "PUT"], 
   credentials: true,
   allowedHeaders: "Content-Type, Authorization"  
 }));
