@@ -16,11 +16,6 @@ const sigupValidation = zod.object({
   password: zod.string().min(6),
 });
 
-userRouter.get("/", async (req, res) => {
-   res.json({
-     msg: "working for signup"
-   })
-})
 // for signup
 userRouter.post("/signup", async (req, res) => {
   const body = req.body;
