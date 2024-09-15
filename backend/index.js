@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const userRouter = require("./routes/user");
 const blogRouter = require("./routes/blog");
+const mainRouter = require("./mainRouter");
 const app = express();
 
 
@@ -14,9 +15,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use("/user", userRouter);
-
-app.use("/blog", blogRouter);
+app.use("/v1", mainRouter);
 
 app.get("/", (req, res) => {
   res.send("hello");
