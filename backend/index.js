@@ -2,6 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mainRouter = require("./mainRouter");
 const app = express();
+const {User} = require("./db");
+const zod = require("zod");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+require("dotenv").config();
+
 
 app.use(cors({
   origin: '*',
@@ -13,6 +20,15 @@ app.use(cors({
 app.use(express.json());
 
 app.use("/v1", mainRouter);
+
+
+const sigupValidation = zod.object({
+  firstname: zod.string(),
+  lastname: zod.string(),
+  username: zod.string(),
+  email: zod.string().email(),
+  password: zod.string().min(6),
+});
 
 app.post("/signin", async (req, res) => {
   const body = req.body;
