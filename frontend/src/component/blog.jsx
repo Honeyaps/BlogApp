@@ -15,7 +15,7 @@ export default function Blog({ title, description, image, date, author }) {
     <div className="latest_blog" onClick={handleClick}>
       <div className="blogs">
         <div className="datenow">
-          <h1 className="blog_avtar">{author?.slice(0, 1)}</h1>
+          <h1 className="blog_avtar">{author?.slice(0, 1).toUpperCase()}</h1>
           <p className="desc_sec">{dates}</p>
         </div>
         <h2 className="blog_title">{title}</h2>
