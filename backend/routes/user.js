@@ -44,7 +44,7 @@ userRouter.post("/signup", async (req, res) => {
       password: securePass,
     });
 
-    const token = jwt.sign(response._id.toHexString(), process.env.SECRET);
+    const token = jwt.sign({ id: response._id.toHexString() }, process.env.SECRET); // For signup
 
     return res.json({
       name: response.firstname,
@@ -76,7 +76,8 @@ userRouter.post("/signin", async (req, res) => {
 
     const passCmpr = await bcrypt.compare(body.password, checks.password);
     if (passCmpr) {
-      const token = jwt.sign(checks._id.toHexString(), process.env.SECRET);
+      const token = jwt.sign({ id: checks._id.toHexString() }, process.env.SECRET); // For signin
+
 
       return res.json({
         name: checks.firstname,

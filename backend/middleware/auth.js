@@ -1,21 +1,24 @@
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
-function Auth(req,res,next){
+function Auth(req, res, next) {
     const header = req.headers.authorization;
-    try{
-        const token = jwt.verify(header,process.env.SECRET)
-    if(!token){
-        return res.status(403).json({msg: "Cannot perform operation"})
+    if (!header || !header.startsWith("Bearer ")) {
+        return res.status(403).json({ msg: "Token not provided or invalid format" });
     }
-    req.userId = token
-    next();
-    }
-    catch(e){
-        console.log(e)
-        return res.status(403).json({msg: "cannot perform operations"})
+
+    const token = header.split(" ")[1]; // Extract the token from the header
+    try {
+        const decoded = jwt.verify(token, process.env.SECRET);
+        req.userId = decoded.id; // Ensure you are extracting the user ID correctly
+        console.log("User ID from token:", req.userId); // Log the user ID
+        next();
+    } catch (e) {
+        console.error(e);
+        return res.status(403).json({ msg: "Invalid token" });
     }
 }
+
 
 module.exports = Auth
 

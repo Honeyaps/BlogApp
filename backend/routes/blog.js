@@ -21,54 +21,62 @@ const multiple = [Auth, upload.single("filename")];
 
 // api for creating blog
 // Optimized API for creating blog
+// API for creating a blog post
 blogRouter.post("/create_post", multiple, async (req, res) => {
   try {
-    // Zod validation
-    const body = req.body;
-    const validationResult = zodvalidation.safeParse(body);
-    if (!validationResult.success) {
-      return res.status(400).json({ msg: "Invalid data" });
-    }
+      // Zod validation
+      const body = req.body;
+      const validationResult = zodvalidation.safeParse(body);
+      if (!validationResult.success) {
+          return res.status(400).json({ msg: "Invalid data" });
+      }
 
-    // Check if file was uploaded
-    if (!req.file) {
-      return res.status(400).json({ msg: "File not uploaded" });
-    }
+      // Check if file was uploaded
+      if (!req.file) {
+          return res.status(400).json({ msg: "File not uploaded" });
+      }
 
-    // Handle file upload and blog creation concurrently
-    const dataTime = Date.now();
-    const filename = `${req.file.originalname}-${dataTime}`;
-    const storageRef = ref(storage, `ECommerce/${filename}`);
+      // Handle file upload and blog creation concurrently
+      const dataTime = Date.now();
+      const filename = `${req.file.originalname}-${dataTime}`;
+      const storageRef = ref(storage, `ECommerce/${filename}`);
 
-    // Firebase upload metadata
-    const metadata = { contentType: req.file.mimetype };
+      // Firebase upload metadata
+      const metadata = { contentType: req.file.mimetype };
 
-    // Start file upload
-    const uploadTask = uploadBytesResumable(storageRef, req.file.buffer, metadata);
+      // Start file upload
+      const uploadTask = uploadBytesResumable(storageRef, req.file.buffer, metadata);
 
-    // Fetch author details in parallel
-    const authorPromise = User.findById(req.userId);
+      // Fetch author details in parallel
+      const authorPromise = User.findById(req.userId);
 
-    // Wait for upload to complete and get the download URL
-    const [snapshot, author] = await Promise.all([uploadTask, authorPromise]);
-    const downloadURL = await getDownloadURL(snapshot.ref);
+      // Wait for upload to complete and get the download URL
+      const [snapshot, author] = await Promise.all([uploadTask, authorPromise]);
 
-    // Save blog post to the database
-    await Blog.create({
-      title: body.title,
-      description: body.description,
-      img: downloadURL,
-      date: Date.now(),
-      userId: req.userId,
-      authorName: author.firstname,
-    });
+      // Check if author is found
+      if (!author) {
+          return res.status(404).json({ msg: "Author not found" });
+      }
 
-    return res.json({ msg: "Upload successful" });
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      // Save blog post to the database
+      await Blog.create({
+          title: body.title,
+          description: body.description,
+          img: downloadURL,
+          date: Date.now(),
+          userId: req.userId,
+          authorName: author.firstname,
+      });
+
+      return res.json({ msg: "Upload successful" });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ msg: "Server error" });
+      console.error(error);
+      return res.status(500).json({ msg: "Server error" });
   }
 });
+
 
 // api for read blogs
 blogRouter.get("/getblog", async (req, res) => {
