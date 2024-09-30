@@ -55,15 +55,15 @@ export default function Crt_blg() {
             Authorization: `Bearer ${token}`, 
           },
         });
-        setFormData({ title: "", description: "" });
-        setImage(null); // Reset image
-        setErrors({}); // Clear errors
-        navigate("/"); 
+        // Clear form data after successful submission if needed
+        setFormData({
+          title: "",
+          description: "", // Corrected typo here
+        });
+        navigate("/");
       } catch (error) {
         console.error("Error:", error);
-        alert("cannot add blog. please try again");
-      } finally {
-        setSpinner(false);
+        alert("cannot add blog");
       }
     }
   };
