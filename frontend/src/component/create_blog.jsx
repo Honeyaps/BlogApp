@@ -8,10 +8,13 @@ import axiosInstance from "../User/axiosConfig";
 export default function Crt_blg() {
   const navigate = useNavigate();
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      navigate("/signup");
-    }
-  });
+    const checkToken = () => {
+      if (!localStorage.getItem("token")) {
+        navigate("/signup");
+      }
+    };
+    checkToken();
+  }, [navigate]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -49,18 +52,18 @@ export default function Crt_blg() {
       try {
         const response = await axiosInstance.post("/blog/create_post", data, {
           headers: {
-            Authorization: token,
+            Authorization: `Bearer ${token}`, 
           },
         });
-        // Clear form data after successful submission if needed
-        setFormData({
-          title: "",
-          description: "", // Corrected typo here
-        });
-        navigate("/");
+        setFormData({ title: "", description: "" });
+        setImage(null); // Reset image
+        setErrors({}); // Clear errors
+        navigate("/"); 
       } catch (error) {
         console.error("Error:", error);
-        alert("cannot add blog");
+        alert("cannot add blog. please try again");
+      } finally {
+        setSpinner(false);
       }
     }
   };
